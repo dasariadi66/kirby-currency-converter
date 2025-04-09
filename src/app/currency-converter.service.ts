@@ -6,16 +6,16 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CurrencyConverterService {
-  ACCESS_KEY= `3891474c91a02b9312be28f834239030`
+  ACCESS_KEY= `3ba393714aaafaadbcb7f0ba`
   fromCurrency: string = '';
   toCurrency:string = '';
   amount:number = 0;
-  private readonly BASE_URL = `http://api.exchangeratesapi.io/v1`
+  private readonly BASE_URL = `https://v6.exchangerate-api.com/v6/${this.ACCESS_KEY}/latest`
 
   constructor(private http: HttpClient) { }
 
-  getExchangeRate(fromCurrency: string, toCurrency:string, amount:number){
-    const url = `${this.BASE_URL}/convert?access_key=${this.ACCESS_KEY}&from=${fromCurrency}&to=${toCurrency}&amount=${amount}`
+  getExchangeRate(fromCurrency: string){
+    const url = `${this.BASE_URL}/${fromCurrency}`
     return this.http.get(url);
   }
 }
