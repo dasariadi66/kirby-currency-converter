@@ -1,18 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CurrencyConverterService {
-  constructor(private http: HttpClient) { }
-  private apiUrl = 'https://bcd-api-dca-ipa.cbsa-asfc.cloud-nuage.canada.ca/exchange-rate-lambda/exchange-rates'
- 
-  private getExchangeRate(): Observable<any> {  
-    return this.http.get<any>(this.apiUrl)
-  }
-  convertAmount(amount: number, fromCurrency: string, toCurrency: string){
+  ACCESS_KEY= `3891474c91a02b9312be28f834239030`
+  fromCurrency: string = '';
+  toCurrency:string = '';
+  amount:number = 0;
+  private readonly BASE_URL = `http://api.exchangeratesapi.io/v1`
 
+  constructor(private http: HttpClient) { }
+
+  getExchangeRate(fromCurrency: string, toCurrency:string, amount:number){
+    const url = `${this.BASE_URL}/convert?access_key=${this.ACCESS_KEY}&from=${fromCurrency}&to=${toCurrency}&amount=${amount}`
+    return this.http.get(url);
   }
 }
