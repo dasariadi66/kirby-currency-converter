@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CurrencyConverterService } from '../currency-converter.service';
+import { CurrencyConverterService } from '../services/currency-converter.service';
 import { CommonModule } from '@angular/common';
 import {FormsModule} from '@angular/forms';
 

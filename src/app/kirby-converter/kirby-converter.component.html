@@ -8,6 +8,7 @@
         <div class="form-group">
             <label for="fromCurrency">From</label>
             <select id="fromCurrency" [(ngModel)]="fromCurrency" [ngModelOptions]="{standalone: true}" >
+                <option value="CAD">CAD</option>
                 <option value="USD">USD</option>
                 <option value="EUR">EUR</option>
                 <option value="GBP">GBP</option>
@@ -17,6 +18,7 @@
         <div class="form-group">
             <label for="toCurrency">To</label>
             <select id="toCurrency" [(ngModel)]="toCurrency" [ngModelOptions]="{standalone: true}">
+                <option value="CAD">CAD</option>
                 <option value="USD">USD</option>
                 <option value="EUR">EUR</option>
                 <option value="GBP">GBP</option>
@@ -26,6 +28,6 @@
         <button (click)="convertCurrency()" type="button">Convert</button>
     </form>
     <div class="result" *ngIf="convertedAmount">
-        <h2>Converted Amount: {{ convertedAmount }} </h2>
+        <h2 id="convertedAmount">Converted Amount: {{ convertedAmount }} </h2>
     </div>
 </div>
